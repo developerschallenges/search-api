@@ -1,0 +1,30 @@
+name: Function Deploy
+
+on: [push]
+
+jobs:
+  hexo-deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@master
+
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '16.x'
+
+    - run: |
+        pushd './'
+        npm install
+        npm run build --if-present
+        npm run test --if-present
+        popd
+
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - uses: Azure/functions-action@v1
+      with:
+        app-name: 'fa-developerschallenges'
+        package: '.'
