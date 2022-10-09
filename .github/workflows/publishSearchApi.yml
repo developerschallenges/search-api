@@ -1,4 +1,4 @@
-name: Search Api Publish
+name: Publish Search Api
 
 on: [push]
 
@@ -8,7 +8,7 @@ env:
   NODE_VERSION: '16.x'
 
 jobs:
-  search-api-publish:
+  publish-search-api:
     runs-on: ubuntu-latest
     steps:
 
