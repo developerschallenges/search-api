@@ -1,6 +1,6 @@
 # Search Api
 
-[![Search Api Publish](https://github.com/developerschallenges/search-api/actions/workflows/publishSearchApi.yml/badge.svg?branch=master)](https://github.com/developerschallenges/search-api/actions/workflows/publishSearchApi.yml)
+[![Deploy Search Api](https://github.com/developerschallenges/search-api/actions/workflows/deploySearchApi.yml/badge.svg?branch=master)](https://github.com/developerschallenges/search-api/actions/workflows/deploySearchApi.yml)
 
 ## Introduction
 
