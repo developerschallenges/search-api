@@ -16,7 +16,7 @@ const createFilterExpression = (filterList, facets) => {
     let i = 0;
     let filterExpressions = [];
 
-    while (filterList && i < filterList.length) {        
+    while (filterList && i < filterList.length) {
         let field = filterList[i].field;
         let value = filterList[i].value;
 
@@ -51,7 +51,6 @@ const readFacets = (facetString) => {
 }
 
 module.exports = async function (context, req) {
-
     //context.log(req);
 
     try {
@@ -61,7 +60,6 @@ module.exports = async function (context, req) {
         const skip = (req.query.skip || (req.body && req.body.skip));
         const filters = (req.query.filters || (req.body && req.body.filters));
         const facets = readFacets(process.env["SearchFacets"]);
-        
 
         // If search term is empty, search everything
         if (!q || q === "") {
@@ -87,7 +85,7 @@ module.exports = async function (context, req) {
         }
 
         // Logging search results
-         context.log(searchResults.count);
+        context.log(searchResults.count);
 
         // Creating the HTTP Response
         context.res = {
@@ -113,5 +111,4 @@ module.exports = async function (context, req) {
             }
         };
     }
-
 };
