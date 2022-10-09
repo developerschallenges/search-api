@@ -1,9 +1,14 @@
-name: Function Deploy
+name: Search Api Publish
 
 on: [push]
 
+env:
+  AZURE_FUNCTIONAPP_NAME: 'fa-developerschallenges'
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'
+  NODE_VERSION: '16.x'
+
 jobs:
-  hexo-deploy:
+  search-api-publish:
     runs-on: ubuntu-latest
     steps:
 
@@ -11,10 +16,10 @@ jobs:
 
     - uses: actions/setup-node@v1
       with:
-        node-version: '16.x'
+        node-version: ${{ env.NODE_VERSION }}
 
     - run: |
-        pushd './'
+        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
         npm install
         npm run build --if-present
         npm run test --if-present
@@ -26,5 +31,5 @@ jobs:
 
     - uses: Azure/functions-action@v1
       with:
-        app-name: 'fa-developerschallenges'
-        package: '.'
+        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
+        package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
