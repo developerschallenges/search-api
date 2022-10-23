@@ -1,6 +1,9 @@
 name: Deploy Search Api
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 env:
   AZURE_FUNCTIONAPP_NAME: 'fa-developerschallenges'
